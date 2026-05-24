@@ -47,3 +47,16 @@ test('Verify the Days secletion in page by user', async ({page}) => {
     await expect(day2).toHaveValue('monday');
     await page.waitForTimeout(4000);
 });
+
+
+
+
+test.only ('verify the days all select ',async({page}) => {
+     await page.goto("https://testautomationpractice.blogspot.com/");
+     const days:string[]=['Sunday','Monday','Wednesday'];
+     const selectbox:Locator[]=days.map(index=>page.getByLabel(index));
+    for( const index of selectbox)
+        {
+            await index.check();
+         }
+});
