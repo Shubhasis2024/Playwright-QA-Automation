@@ -34,4 +34,5 @@ const Countryname:string[]= ( await Countrydata.allTextContents()).map(text=>tex
 });
 
 
+//Script added on 07-06-2026
 
