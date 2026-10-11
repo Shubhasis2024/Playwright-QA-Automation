@@ -25,3 +25,29 @@ test("Read the all the data from dynamic tabel", async ({ page }) => {
     }
   }
 });
+
+test.only('Search any data froom datatabel automatically', async({page}) => {
+  await page.goto("https://datatables.net/");
+ const search:Locator= page.locator("#dt-search-0");
+ await search.fill("Singapore");
+await page.waitForTimeout(4000)
+  const rows =await page.locator("#myTable tbody tr").all()
+   console.log("Values are:-",rows);
+  if (rows.length>=1)
+  {
+    for(let row of rows)
+    {
+      const value= await row.innerText()
+      if(value.includes("Singapore"))
+      {
+        console.log("Value Exist !")
+       
+        break;
+      }
+    }
+  }
+  else
+  {
+    console.log("No value exist here");
+  }
+})
